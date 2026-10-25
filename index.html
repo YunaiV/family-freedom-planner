@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人生有数 · 上海家庭财富自由计算器</title>
+<meta name="description" content="根据小Lin说视频公式制作的可离线财富自由计算器。默认上海、一个孩子、计划买房，支持自定义数字与反向测算。">
+<style>
+:root{--bg:#f6f5f0;--paper:#fff;--ink:#242d29;--muted:#747c73;--line:#e4e7df;--green:#345c48;--light:#eaf0e9;--orange:#de713e;--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 var(--sans);font-variant-numeric:tabular-nums}button,input,select{font:inherit}button,a,input,select{outline-offset:4px}button{cursor:pointer}a{color:var(--green);text-underline-offset:3px}header,main,footer{max-width:1320px;margin:auto;padding:0 40px}header{height:91px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:750;letter-spacing:1px}.brand-icon{background:var(--green);color:white;border-radius:10px;width:34px;height:34px;display:grid;place-items:center;font-size:22px}.brand small{font:10px/1.1 var(--sans);color:var(--muted);letter-spacing:2px;display:block;margin-top:4px}.source{font-size:12px;color:var(--muted)}.intro{padding:39px 0 29px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.eyebrow{color:var(--green);letter-spacing:2px;font-size:11px;font-weight:700;margin-bottom:9px}h1{font-size:34px;line-height:1.35;letter-spacing:-1px;margin:0 0 10px}h1 em{font-style:normal;color:var(--green)}.intro p{margin:0;color:var(--muted);font-size:13px}.tags{display:flex;gap:7px;white-space:nowrap;margin-bottom:5px}.tag{border:1px solid #dbe1d6;border-radius:24px;padding:5px 12px;font-size:12px;color:var(--green);background:#eef1e9}.layout{display:grid;grid-template-columns:minmax(350px,.93fr) minmax(480px,1.3fr);gap:25px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:25px;margin-bottom:20px}.panel-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:19px}.panel-title h2{margin:0;font-size:16px}.quiet{border:0;background:transparent;color:var(--muted);padding:4px;font-size:12px}.quiet:hover{color:var(--green)}.section{border-top:1px solid var(--line);padding-top:19px;margin-top:19px}.section:first-of-type{border:0;padding-top:0}.section-head{display:flex;align-items:center;gap:9px;margin-bottom:13px}.step{border:1px solid var(--line);border-radius:50%;width:23px;height:23px;display:grid;place-items:center;font-size:10px;color:var(--muted)}h3{font-size:13px;margin:0}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:13px;min-width:0}.field label{display:block;font-size:12px;margin-bottom:6px;color:#535e55}.input-wrap{position:relative}.input-wrap input{padding-right:52px}.unit{position:absolute;right:12px;top:11px;font-size:12px;color:var(--muted);pointer-events:none}input,select{background:#fcfcf9;border:1px solid #dfe4da;border-radius:8px;width:100%;height:42px;padding:8px 11px;color:var(--ink);transition:border .15s}input:focus,select:focus{border-color:var(--green);outline:2px solid #345c4818}input:invalid{border-color:#be5d40}input:disabled{background:#f0f1ed;color:#9da298}.hint{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 9px}.label-note{color:#92998f;font-size:10px;margin-left:6px}.check{display:flex;gap:8px;align-items:center;font-size:12px;cursor:pointer;margin-bottom:13px}.check input{width:16px;height:16px;accent-color:var(--green);margin:0}details{border-top:1px solid var(--line);padding-top:15px;margin-top:16px}summary{cursor:pointer;font-size:12px;color:var(--green);font-weight:650}details[open] summary{margin-bottom:15px}.mode-note{background:#f5f6f1;border-radius:7px;padding:9px 12px;margin:3px 0 12px;color:var(--muted);font-size:11px}.status{color:var(--muted);font-size:11px;min-height:19px;margin-top:12px}.actions{display:flex;gap:9px;margin-top:13px}.btn{border:1px solid #dce2d7;color:var(--green);background:#fff;border-radius:7px;padding:8px 13px;font-size:12px}.btn:hover{background:var(--light)}.btn.primary{background:var(--green);color:#fff;border-color:var(--green)}.hero{position:relative;overflow:hidden;background:#284d3c;color:#fff;border:0;padding:28px 31px}.hero:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #ffffff0d;border-radius:50%;right:-90px;top:-90px;box-shadow:0 0 0 32px #ffffff04,0 0 0 64px #ffffff03;pointer-events:none}.hero-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#d0dece}.live{border:1px solid #77978270;border-radius:20px;padding:3px 9px;font-size:10px;white-space:nowrap}.live:before{content:"";display:inline-block;width:5px;height:5px;background:#b9dba6;border-radius:50%;margin-right:5px}.total{display:flex;align-items:baseline;gap:10px;margin:15px 0 4px}.total strong{font-size:62px;line-height:1.2;font-weight:550;letter-spacing:-3px}.total span{font-size:17px;color:#d7e1d1}.hero-caption{font-size:11px;color:#bdcfbd}.hero-rule{height:1px;background:#6d8f7e65;margin:22px 0 18px}.hero-foot{display:flex;gap:20px;justify-content:space-between;font-size:12px}.hero-foot b{font-weight:500;color:#fff}.hero-foot span{color:#c3d4c3}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px}.mini{background:white;border:1px solid var(--line);border-radius:12px;padding:19px 22px}.mini .caption{font-size:12px;color:var(--muted)}.mini strong{display:block;font-size:26px;letter-spacing:-.7px;font-weight:600;margin:6px 0 3px}.mini strong small{font-size:12px;font-weight:400;letter-spacing:0}.mini p{margin:0;font-size:11px;color:var(--muted)}.mini.accent strong{color:var(--orange)}.bar{display:flex;height:13px;border-radius:4px;overflow:hidden;margin:19px 0 21px;background:var(--bg)}.segment{transition:width .2s;min-width:0}.legend-row{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;margin:12px 0;font-size:12px}.dot{height:8px;width:8px;border-radius:2px}.legend-row .amount{font-size:13px}.legend-row .pct{color:#929a90;font-size:10px;margin-left:9px;display:inline-block;min-width:37px;text-align:right}.formula{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:#f4f6f0;border-radius:9px;padding:14px 16px;font-size:13px;color:var(--green);font-weight:600}.formula .plus{color:#9ba992}.formula-note{font-size:11px;color:var(--muted);margin:10px 0 0}.metric{font-size:11px;color:var(--muted);font-weight:400}.sensitivity{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.scenario{border:1px solid var(--line);border-radius:9px;padding:14px}.scenario.selected{background:#f0f4ec;border-color:#c1d0b9}.scenario span{font-size:11px;color:var(--muted)}.scenario b{display:block;font-weight:600;font-size:18px;margin:7px 0 3px}.scenario small{font-size:10px;color:var(--muted)}.warning{padding:11px 13px;border-radius:8px;background:#fff0e6;color:#a54c26;font-size:12px;margin-bottom:17px}.hidden{display:none!important}.notes{margin-top:7px;margin-bottom:25px;color:var(--muted);font-size:11px}.notes h2{color:var(--ink);font-size:13px;margin-bottom:8px}.notes p{margin:7px 0}.notes ol{padding-left:18px;margin:6px 0}.notes li{margin-bottom:5px}footer{padding-top:16px;padding-bottom:26px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:10px 18px;border-radius:8px;z-index:20;font-size:12px}.accent-text{color:var(--orange)}.small-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.small-title h2{font-size:15px;margin:0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(min-width:1050px){.results{position:sticky;top:22px}}@media(max-width:1020px){header,main,footer{padding-left:24px;padding-right:24px}.layout{grid-template-columns:minmax(310px,1fr) minmax(370px,1.15fr);gap:18px}.panel{padding:21px}.hero{padding:25px}.intro{align-items:start}.tags{flex-wrap:wrap;justify-content:flex-end}.total strong{font-size:52px}.scenario{padding:10px}.scenario b{font-size:16px}}@media(max-width:760px){header,main,footer{padding-left:18px;padding-right:18px}header{height:75px}.source{display:none}.intro{padding:27px 0 22px;display:block}h1{font-size:28px}.tags{justify-content:start;margin-top:17px}.layout{display:flex;flex-direction:column}.inputs,.results{width:100%}.results{order:-1}.hero{padding:24px;margin-bottom:14px}.total strong{font-size:52px}.hero-foot{font-size:11px}.mini-grid{margin-bottom:15px;gap:10px}.mini{padding:15px}.mini strong{font-size:23px}.panel{margin-bottom:15px}.sensitivity b{font-size:16px}.notes{padding:3px 3px 10px}footer{display:block}footer span{display:block;margin-top:5px}}@media print{body{background:#fff}.inputs,.actions,header .source,.notes details{display:none}header,main,footer{padding-left:0;padding-right:0}.layout{display:block}.results{position:static}.panel,.mini{break-inside:avoid}.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}.intro{padding-top:20px}.bar,.scenario{print-color-adjust:exact}.notes{font-size:10px}footer{margin-top:20px}.toast{display:none}}
+
+.actions{flex-wrap:wrap}.snapshot-name{display:flex;gap:9px;margin:15px 0}.snapshot-name input{min-width:0}.snapshot-name button{white-space:nowrap}.snapshot-item{border-top:1px solid var(--line);padding:13px 0;display:flex;align-items:center;gap:11px}.snapshot-select{width:17px;height:17px;accent-color:var(--green);flex-shrink:0}.snapshot-meta{flex:1;min-width:0}.snapshot-meta strong{display:block;font-size:13px;overflow-wrap:anywhere}.snapshot-meta small{font-size:10px;color:var(--muted)}.snapshot-meta label{cursor:pointer}.snapshot-list{max-height:350px;overflow:auto}.table-wrap{overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:9px;margin-top:15px}table{border-collapse:collapse;min-width:550px;width:100%;font-size:12px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);min-width:150px;vertical-align:top}th:first-child,td:first-child{min-width:150px;position:sticky;left:0;background:#fafbf7;z-index:1}th{background:#f2f5ed;font-weight:600;overflow-wrap:anywhere}th small{display:block;font-size:10px;color:var(--muted);font-weight:400}.different td:not(:first-child){background:#fff6ed}.compare-note{font-size:11px;color:var(--muted);margin:12px 0 0}.snapshot-empty{font-size:12px;color:var(--muted);padding:14px 0}textarea{font:11px/1.6 monospace;width:100%;border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical;color:var(--ink);background:#fcfcf9}.snapshot-count{font-size:11px;color:var(--muted)}#comparison{scroll-margin-top:20px}#savedPlans{scroll-margin-top:20px}
+@media print{#savedPlans{display:none}.table-wrap{overflow:visible}table{min-width:0}th,td,th:first-child,td:first-child{min-width:0;position:static;font-size:10px;padding:8px}}
+
+.mobile-nav,.mobile-summary{display:none}
+@media(max-width:760px){
+ html{scroll-padding-top:132px}body{font-size:14px}header,main,footer{padding-left:14px;padding-right:14px}header{height:66px}.brand{font-size:18px}.brand small{font-size:9px;letter-spacing:1.4px}.intro{padding:23px 2px 18px}.intro .eyebrow{display:none}h1{font-size:27px;letter-spacing:-.5px}.intro p{font-size:13px;line-height:1.8}.tags{margin-top:13px;gap:6px}.tag{padding:4px 10px;font-size:11px}
+ .mobile-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:6px;margin:0 0 0;background:#e8ede3;border-radius:12px;position:sticky;top:env(safe-area-inset-top,0px);z-index:10;box-shadow:0 6px 16px #f6f5f0}.mobile-nav button{min-height:46px;border:0;border-radius:8px;background:transparent;color:#5a6b5c;font-size:13px;font-weight:600;padding:8px 3px}.mobile-nav button[aria-pressed="true"]{background:white;color:var(--green);box-shadow:0 1px 5px #24392a0d}
+ .mobile-summary{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:9;background:var(--bg);padding:13px 3px 14px;margin-bottom:2px}.mobile-summary small{display:block;font-size:10px;color:var(--muted)}.mobile-summary strong{font-size:20px;letter-spacing:-.5px}.mobile-summary button{font-size:12px;min-height:44px;background:white;border:1px solid #dce2d7;border-radius:8px;color:var(--green);padding:8px 12px}
+ .layout{display:block}.inputs,.results{width:100%;min-width:0}.results{position:static}.panel{padding:18px 16px;margin-bottom:14px;border-radius:13px}.panel-title{margin-bottom:15px}.panel-title h2{font-size:15px}.quiet{min-height:44px;padding:8px;font-size:12px}.section{margin-top:17px;padding-top:17px}.section-head{margin-bottom:12px}.row{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.row>.field>label{min-height:36px;line-height:18px}.field label{font-size:12px;line-height:1.6}.field input,.field select,#snapshotName{font-size:16px;height:48px;padding-left:10px}.input-wrap input{padding-right:54px}.unit{top:14px;right:10px;font-size:11px}.field{margin-bottom:12px}.hint,.mode-note,.formula-note,.compare-note{font-size:12px;line-height:1.8}.label-note{display:block;margin-left:0}.check{font-size:13px;line-height:1.8;min-height:44px;align-items:flex-start;padding:7px 0}.check input{width:20px;height:20px;flex-shrink:0;margin-top:2px}summary{font-size:13px;min-height:44px;padding:10px 0}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{min-height:44px;font-size:13px;padding:9px 11px}.status{font-size:11px;line-height:1.8}.toast{bottom:calc(env(safe-area-inset-bottom,0px) + 20px);max-width:calc(100vw - 28px);width:max-content;white-space:normal;font-size:12px;text-align:center}
+ .hero{padding:23px 20px;margin-top:14px}.hero-top{flex-wrap:wrap;align-items:flex-start;gap:8px}.total{flex-wrap:wrap;gap:8px}.total strong{font-size:clamp(35px,12vw,51px);letter-spacing:-2px;overflow-wrap:anywhere;max-width:100%}.total span{font-size:15px}.hero-caption{font-size:11px;line-height:1.8}.hero-foot{flex-wrap:wrap;gap:8px 16px;font-size:11px}.mini-grid{grid-template-columns:1fr;gap:10px;margin-bottom:14px}.mini{padding:16px 19px}.mini strong{font-size:26px}.mini p{font-size:12px}.small-title{flex-wrap:wrap;gap:5px;align-items:flex-start}.small-title .metric{font-size:10px}.legend-row{grid-template-columns:9px minmax(0,1fr) auto;gap:6px;font-size:12px}.legend-row .amount{font-size:12px}.legend-row .pct{font-size:10px;min-width:30px;margin-left:3px}.formula{gap:6px;padding:12px;font-size:12px}.sensitivity{grid-template-columns:1fr;gap:8px}.scenario{display:grid;grid-template-columns:1fr auto;align-items:center;padding:12px 13px}.scenario b{margin:0;font-size:19px}.scenario small{grid-column:1/-1}.scenario span{font-size:12px}.notes{padding:0 3px 8px}.notes p,.notes li{font-size:12px;line-height:1.8}.notes h2{font-size:13px}
+ .snapshot-name{flex-direction:column;gap:9px}.snapshot-name button{width:100%}.snapshot-item{gap:9px;align-items:flex-start}.snapshot-select{width:22px;height:22px;margin-top:8px}.snapshot-meta strong{font-size:13px}.snapshot-meta small{font-size:11px;line-height:1.7}.snapshot-list{max-height:none}.snapshot-item .btn{flex-shrink:0}.snapshot-meta label{display:block;min-height:35px;padding-top:4px}.snapshot-empty{font-size:12px}.table-wrap{-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}table{font-size:12px;min-width:550px}th,td{padding:12px;min-width:145px}th:first-child,td:first-child{min-width:122px;max-width:122px}.compare-note::before{content:'对比表可左右滑动。';font-weight:600;color:var(--green)}textarea{font-size:16px;line-height:1.6}footer{font-size:11px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 25px)}
+ body[data-mobile-view="inputs"] .results,body[data-mobile-view="inputs"] #savedPlans,body[data-mobile-view="inputs"] #comparison{display:none}
+ body[data-mobile-view="results"] .inputs,body[data-mobile-view="results"] #comparison,body[data-mobile-view="results"] .mobile-summary{display:none}
+ body[data-mobile-view="plans"] #planner,body[data-mobile-view="plans"] .results{display:none}
+ body[data-mobile-view="plans"] #comparison{display:block;margin-top:0}
+ body[data-mobile-view="inputs"] #planner,body[data-mobile-view="plans"] #savedPlans{margin-top:2px}
+}
+@media(max-width:350px){.row{grid-template-columns:1fr}.row>.field>label{min-height:0}.legend-row .pct{display:none}.hero-foot{display:block}.hero-foot>div{margin-top:5px}.mobile-nav button{font-size:12px}}
+@media print{.mobile-nav,.mobile-summary{display:none!important}body[data-mobile-view] .inputs{display:block!important}body[data-mobile-view] .results,body[data-mobile-view] #comparison{display:block!important}body[data-mobile-view] #planner,body[data-mobile-view] #savedPlans{display:none!important}}
+</style>
+</head>
+<body data-mobile-view="inputs">
+<header><div class="brand"><span class="brand-icon">∑</span><div>人生有数<small>PLAN YOUR OWN FREEDOM</small></div></div><a class="source" href="https://www.bilibili.com/video/BV1yUHP6rEYD/" target="_blank" rel="noopener">灵感来自小Lin说 ↗</a></header>
+<main>
+<section class="intro"><div><div class="eyebrow">FAMILY FINANCIAL FREEDOM PLANNER</div><h1>离理想生活，<em>还有多远？</em></h1><p>把生活的选择，变成可以亲手调整的数字。</p></div><div class="tags"><span class="tag" id="cityTag">上海</span><span class="tag" id="childTag">1 个孩子</span><span class="tag" id="homeTag">计划买房</span></div></section>
+<nav class="mobile-nav" id="mobileNav" aria-label="手机页面导航"><button type="button" data-mobile-target="inputs" aria-pressed="true">填写预算</button><button type="button" data-mobile-target="results" aria-pressed="false">查看结果</button><button type="button" data-mobile-target="plans" aria-pressed="false">保存 / 对比</button></nav>
+<div class="mobile-summary"><div><small>当前预算目标 · 万元</small><strong id="mobileGoal">1,658</strong></div><button id="mobileResultButton" type="button">查看计算结果 →</button></div>
+<div class="layout">
+<div class="inputs"><form id="planner" class="panel" novalidate>
+<div class="panel-title"><h2>你的生活，自己定义</h2><button class="quiet" type="button" id="reset">↺ 恢复默认</button></div>
+<div class="section"><div class="section-head"><span class="step">01</span><h3>日常生活</h3></div>
+<div class="row"><div class="field"><label for="city">生活城市</label><select id="city"><option value="shanghai">上海</option><option value="beijing">北京</option><option value="guizhou">贵州</option><option value="national">全国参考</option><option value="custom">自定义</option></select></div><div class="field"><label for="monthly">家庭每月生活费 X</label><div class="input-wrap"><input id="monthly" type="number" min="0" max="100000000" step="any" value="15000" inputmode="decimal"><span class="unit">元 / 月</span></div></div></div>
+<p class="hint">填写全家日常开销，含物业、水电、旅行等；剔除下方已单列的育儿、医疗与购房预算，避免重复。</p></div>
+<div class="section"><div class="section-head"><span class="step">02</span><h3>孩子与健康</h3></div><div class="row"><div class="field"><label for="children">孩子数量 N</label><div class="input-wrap"><input id="children" type="number" min="0" max="20" step="1" value="1" inputmode="numeric"><span class="unit">个</span></div></div><div class="field"><label for="childCost">每个孩子的育儿预算 K</label><div class="input-wrap"><input id="childCost" type="number" min="0" max="1000000" step="any" value="108" inputmode="decimal"><span class="unit">万元</span></div></div></div>
+<p class="hint" id="childHint">108 万元来自视频引用的上海 0–18 岁育儿总成本；已发生的支出不必再留，大学等额外费用可自行加上。</p>
+<div class="field"><label for="medical">全家未来医疗预算 M<span class="label-note">一次性预留</span></label><div class="input-wrap"><input id="medical" type="number" min="0" max="1000000" step="any" value="100" inputmode="decimal"><span class="unit">万元</span></div></div><p class="hint">100 万元仅为家庭示例，可按家庭人数、保障与实际需求修改。</p></div>
+<div class="section"><div class="section-head"><span class="step">03</span><h3>给家留一笔预算</h3></div><label class="check"><input id="buyHouse" type="checkbox" checked>预留购房或剩余房贷资金</label>
+<div class="row"><div class="field"><label for="house">房屋总价</label><div class="input-wrap"><input id="house" type="number" min="0" max="10000000" step="any" value="700" inputmode="decimal"><span class="unit">万元</span></div></div><div class="field"><label for="fees">尚未支付的税费、装修等</label><div class="input-wrap"><input id="fees" type="number" min="0" max="1000000" step="any" value="30" inputmode="decimal"><span class="unit">万元</span></div></div></div>
+<div class="row"><div class="field"><label for="paidPrincipal">已支付本金（含首付）</label><div class="input-wrap"><input id="paidPrincipal" type="number" min="0" max="10000000" step="any" value="0" inputmode="decimal"><span class="unit">万元</span></div></div><div class="field"><label for="futureInterest">预计未来房贷利息</label><div class="input-wrap"><input id="futureInterest" type="number" min="0" max="10000000" step="any" value="0" inputmode="decimal"><span class="unit">万元</span></div></div></div><div class="mode-note" id="housingSummary"></div>
+<p class="hint" id="houseHint">住房预留 H = 房屋总价 − 已支付本金 + 尚未支付的税费装修 + 未来利息。已支付本金包括首付与累计已还本金，不含已付利息；月供不要再放入月生活费 X。房价 700 万、附加预算 30 万仅为示例。</p></div>
+<div class="section"><div class="section-head"><span class="step">04</span><h3>收益假设与现有资产</h3></div><div class="row"><div class="field"><label for="nominal">名义年回报率</label><div class="input-wrap"><input id="nominal" type="number" min="-50" max="50" step="any" value="4.5" inputmode="decimal"><span class="unit">%</span></div></div><div class="field"><label for="inflation">长期年通胀率</label><div class="input-wrap"><input id="inflation" type="number" min="-20" max="50" step="any" value="2" inputmode="decimal"><span class="unit">%</span></div></div></div><p class="hint">沿用视频近似口径：实际回报率 = 名义回报率 − 通胀率。名义回报率请填扣除费用与税负后的假设值。</p>
+<div class="field"><label for="assets">现有可支配资产<span class="label-note">用于缺口与反向测算</span></label><div class="input-wrap"><input id="assets" type="number" min="0" max="100000000" step="any" value="0" inputmode="decimal"><span class="unit">万元</span></div></div><p class="hint">默认 0 为待填写。填写现金、存款和投资等可支配资产，扣除其他负债；房贷已在住房预算中留足，不要再从这里重复扣除。不计入不出售的自住房。</p>
+<details><summary>进阶 DIY：允许逐年花掉本金</summary><label class="check"><input id="finite" type="checkbox">改用有限年限模型</label><div class="field"><label for="years">需要覆盖的生活年限</label><div class="input-wrap"><input id="years" type="number" min="1" max="120" step="1" value="40" inputmode="numeric" disabled><span class="unit">年</span></div></div><div class="mode-note">这是额外的年金模型，不是视频原公式：按每年末支出、回报率固定，期限末生活费本金恰好用完。育儿、医疗、住房仍单独预留。</div></details>
+<div class="actions"><button type="button" class="btn primary" id="saveCurrent">保存当前方案</button><button type="button" class="btn" id="export">导出全部方案</button><button type="button" class="btn" id="print">打印 / 存 PDF</button><button type="button" class="btn" id="import">导入方案</button><input id="importFile" type="file" accept="application/json,.json" hidden></div><div class="status" id="saveStatus" role="status">数字只保存在当前浏览器，不会上传。</div>
+</div></form>
+<section class="panel" id="savedPlans"><div class="panel-title"><h2>保存与对比</h2><span class="snapshot-count" id="snapshotCount">0 份方案</span></div><p class="hint">给当前数字取个名字，保存为独立快照；修改数字不会覆盖历史。勾选 2–4 份即可对比。</p><div class="snapshot-name"><input id="snapshotName" type="text" maxlength="60" aria-label="方案名称" placeholder="例如：当前家庭预算 / 买房后方案"><button class="btn primary" type="button" id="savePlan">保存新方案</button></div><div class="snapshot-list" id="snapshotList"></div><p class="hint">仅保存在当前浏览器。换设备或从本地版迁移到 Sites，请先导出全部方案，再导入。</p><details id="jsonTransfer"><summary>备份文本 / 粘贴导入</summary><p class="hint">导出时这里会显示备份文本。也可粘贴旧版或新版 JSON，点击下方按钮导入。</p><textarea id="jsonText" rows="6" maxlength="1000000" aria-label="方案备份 JSON" spellcheck="false"></textarea><button type="button" class="btn" id="importText">导入上方文本</button></details></section></div>
+<div class="results" id="results" aria-live="polite" aria-atomic="false">
+<div id="warning" role="alert" class="warning hidden"></div>
+<section class="panel hero"><div class="hero-top"><span id="targetTitle">你的家庭财富自由目标</span><span class="live">随输入实时计算</span></div><div class="total"><strong id="total">1,658</strong><span id="totalUnit">万元</span></div><div class="hero-caption" id="heroCaption">按今天的购买力估算 · 日常生活资产本金的购买力保持不变</div><div class="hero-rule"></div><div class="hero-foot"><div><span>实际年回报 </span><b id="realRate">2.5%</b></div><div><span>月开销乘数 </span><b id="multiplier">480 倍</b></div><div><span>计价 </span><b>人民币</b></div></div></section>
+<div class="mini-grid"><div class="mini accent"><div class="caption" id="gapTitle">距离目标还差</div><strong id="gap">1,658 <small>万元</small></strong><p id="gapHint">先填写现有资产，看看你的进度</p></div><div class="mini"><div class="caption">现有资产可支持的月生活费</div><strong id="affordable">—</strong><p id="affordableHint">先留出育儿、医疗与购房预算</p></div></div>
+<section class="panel"><div class="small-title"><h2>这笔钱，都留给了谁？</h2><span class="metric">四项预算 · 今天的价格</span></div><div class="bar" id="breakdownBar" aria-hidden="true"></div><div id="legend"></div><div class="formula" id="formula"><span>480 × X</span><span class="plus">+</span><span>K × N</span><span class="plus">+</span><span>M</span><span class="plus">+</span><span>H</span></div><p class="formula-note" id="formulaNumbers"></p></section>
+<section class="panel"><div class="small-title"><h2>回报假设，能让目标差多少？</h2><span class="metric">其他数字保持不变</span></div><div class="sensitivity" id="sensitivity"></div><p class="formula-note">仅比较假设，不代表能获得对应收益。长期平均回报也无法消除逐年波动与亏损风险。</p></section>
+<div class="notes"><h2>公式有出处，生活由你定义</h2><p>来源：<a href="https://www.bilibili.com/video/BV1yUHP6rEYD/" target="_blank" rel="noopener">小Lin说《你需要多少钱，才能财富自由？》↗</a>。已核对视频字幕与 08:56 公式画面。</p><ol><li><a href="https://www.bilibili.com/video/BV1yUHP6rEYD/?t=300" target="_blank" rel="noopener">05:00</a>：生活费资金 = 12X ÷ 实际年回报率；2.5% 对应 480X。</li><li><a href="https://www.bilibili.com/video/BV1yUHP6rEYD/?t=376" target="_blank" rel="noopener">06:16</a>：视频给出上海单孩 108 万、北京 100 万、贵州 43 万、全国 58 万的育儿参考。切换城市只替换单孩预算，不自动估算房价或生活费。</li><li><a href="https://www.bilibili.com/video/BV1yUHP6rEYD/?t=532" target="_blank" rel="noopener">08:52</a>：总目标 = 480X + KN + M + H。养老日常开支已在 X 中，不重复增加养老本金。</li></ol><details><summary>查看模型边界与默认值</summary><p>默认上海、1 个孩子、买房；家庭月生活费 15,000 元、全家医疗 100 万、住房 700 万、附加投入 30 万均是可编辑场景，不能视作你的实际需求或上海官方标准。育儿 108 万来自视频中的历史参考，亦非保证足够。</p><p>视频模型将育儿、医疗、购房按今天价格直接相加，未按发生时间折现，也未模拟这些预算的未来涨价。本页在原视频 H 的基础上扣除已付购房本金，并加入未付费用与未来利息；属于适应已购房家庭的扩展。视频所谓“购买力不变”针对生活费投资本金，并非花完大项后全部资产仍然不减。</p><p>“永久覆盖”是收益与通胀固定时的数学结果，不是保证。现有资产的可花月额，在先扣除全部大项后计算；负数余额显示预算不足。实际回报不为正且月生活费大于 0 时，永久模型没有有限解。</p><p>有限年限模型：生活本金 = 12X × [1 − (1 + r)<sup>−T</sup>] ÷ r；r = 0 时为 12X × T。r 以小数表示，T 为年数。它使用与视频一致的 r ≈ 名义收益 − 通胀，按年末支出，未模拟逐月支出。</p><p>所有数字是预算演算，不构成投资收益承诺。方案自动保存在当前浏览器；更换浏览器、清理数据或部分 file:// 环境可能不保留，建议导出 JSON 备份。历史方案按保存时的输入独立记录；新版兼容旧版 JSON。</p></details></div>
+</div></div>
+<section class="panel" id="comparison"><div class="small-title"><h2>方案对比</h2><span class="metric">橙色标出不同项</span></div><div id="compareContent"><p class="snapshot-empty">在“保存与对比”中勾选至少 2 份历史方案。</p></div></section>
+</main><footer><span>人生有数 · 为想要的生活，做一次具体的计划。</span><span>单文件离线可用 · 无外部依赖 · 默认参数参考于 2026-10-25 整理</span></footer>
+<div class="toast hidden" id="toast" role="status"></div>
+<script id="calculator-core">
+'use strict';
+const DEFAULTS = Object.freeze({city:'shanghai',monthly:15000,children:1,childCost:108,medical:100,buyHouse:true,house:700,fees:30,paidPrincipal:0,futureInterest:0,nominal:4.5,inflation:2,assets:0,finite:false,years:40});
+const CITIES={shanghai:{name:'上海',cost:108},beijing:{name:'北京',cost:100},guizhou:{name:'贵州',cost:43},national:{name:'全国参考',cost:58},custom:{name:'自定义',cost:null}};
+const LIMITS={monthly:[0,100000000],children:[0,20],childCost:[0,1000000],medical:[0,1000000],house:[0,10000000],fees:[0,1000000],paidPrincipal:[0,10000000],futureInterest:[0,10000000],nominal:[-50,50],inflation:[-20,50],assets:[0,100000000],years:[1,120]};
+function validate(s){
+ if(!s||typeof s!=='object'||Array.isArray(s)) throw new Error('方案格式不正确');
+ if(!Object.hasOwn(CITIES,s.city)) throw new Error('请选择有效城市');
+ for(const [key,[min,max]] of Object.entries(LIMITS)){
+  if(typeof s[key]!=='number'||!Number.isFinite(s[key])||s[key]<min||s[key]>max) throw new Error('请检查数字范围');
+ }
+ if(!Number.isInteger(s.children)||!Number.isInteger(s.years)) throw new Error('孩子数量和年限必须为整数');
+ if(s.buyHouse&&s.paidPrincipal>s.house)throw new Error('已支付本金不能超过房屋总价');
+ if(s.nominal-s.inflation<=-100)throw new Error('实际回报率必须大于 -100%');
+ if(typeof s.buyHouse!=='boolean'||typeof s.finite!=='boolean')throw new Error('方案开关格式不正确');
+ return s;
+}
+function annuityFactor(r,finite,years){
+ if(!finite)return r>0?1/r:Infinity;
+ if(Math.abs(r)<1e-10)return years;
+ return -Math.expm1(-years*Math.log1p(r))/r;
+}
+function calculate(s,overrideRate){
+ const r=overrideRate===undefined?(s.nominal-s.inflation)/100:overrideRate;
+ const factor=annuityFactor(r,s.finite,s.years),multiple=12*factor;
+ const living=s.monthly===0?0:s.monthly*multiple/10000;
+ const children=s.childCost*s.children,medical=s.medical,house=s.buyHouse?Math.max(0,s.house-s.paidPrincipal)+s.fees+s.futureInterest:0;
+ const reserves=children+medical+house,total=living+reserves,available=s.assets-reserves;
+ const affordable=available<0?null:(Number.isFinite(multiple)?available*10000/multiple:0);
+ return {r,multiple,living,children,medical,house,reserves,total,available,affordable,gap:total-s.assets};
+}
+</script>
+<script>
+const $=id=>document.getElementById(id),KEY='life-in-numbers-v1';
+let toastTimer;
+const fmt=(n,d=1)=>Number.isFinite(n)?n.toLocaleString('zh-CN',{maximumFractionDigits:d}):'无有限解';
+const money=n=>fmt(n)+' 万元';
+const mobileMedia=typeof window.matchMedia==='function'?window.matchMedia('(max-width:760px)'):{matches:false};
+function setMobileView(view,scroll=false){
+ if(!mobileMedia.matches)return;
+ if(!['inputs','results','plans'].includes(view))return;
+ document.body.dataset.mobileView=view;
+ document.querySelectorAll('#mobileNav button[data-mobile-target]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mobileTarget===view)));
+ if(scroll){if(document.activeElement&&typeof document.activeElement.blur==='function')document.activeElement.blur();window.scrollTo({top:Math.max(0,$('mobileNav').getBoundingClientRect().top+window.scrollY-8),behavior:'smooth'})}
+}
+$('mobileNav').addEventListener('click',e=>{const button=e.target.closest('button[data-mobile-target]');if(button)setMobileView(button.dataset.mobileTarget,true)});
+$('mobileResultButton').addEventListener('click',()=>setMobileView('results',true));
+if(typeof mobileMedia.addEventListener==='function')mobileMedia.addEventListener('change',()=>setMobileView(document.body.dataset.mobileView||'inputs'));
+
+function read(){const s={};for(const k of Object.keys(DEFAULTS)){const e=$(k);s[k]=e.type==='checkbox'?e.checked:k==='city'?e.value:e.value.trim()===''?NaN:Number(e.value)}return s}
+function apply(s){for(const k of Object.keys(DEFAULTS)){$(k).type==='checkbox'?$(k).checked=s[k]:$(k).value=s[k]}sync();render()}
+function sync(){for(const k of ['house','fees','paidPrincipal','futureInterest'])$(k).disabled=!$('buyHouse').checked;$('years').disabled=!$('finite').checked;$('houseHint').textContent=$('buyHouse').checked?'住房预留 H = 房屋总价 − 已支付本金 + 尚未支付的税费装修 + 未来利息。已支付本金包括首付与累计已还本金，不含已付利息；月供不要再放入月生活费 X。房价 700 万、附加预算 30 万仅为示例。':'购房预算不计入目标。若继续租房，请把房租计入上方家庭每月生活费 X。';}
+function toast(t){clearTimeout(toastTimer);$('toast').textContent=t;$('toast').classList.remove('hidden');toastTimer=setTimeout(()=>$('toast').classList.add('hidden'),3500)}
+function render(){
+ let s;try{s=validate(read())}catch(e){$('warning').textContent=e.message+'。请补全有效数字：金额不得为负，孩子数 0–20、年限 1–120 且为整数；名义回报 −50% 至 50%、通胀 −20% 至 50%，且实际回报大于 −100%。下方暂保留上次有效结果。';$('warning').classList.remove('hidden');$('mobileGoal').textContent='请检查输入';$('mobileGoal').setAttribute('aria-label',e.message);return}
+ const a=calculate(s);$('housingSummary').textContent=s.buyHouse?'剩余本金 '+money(s.house-s.paidPrincipal)+' + 未付附加投入 '+money(s.fees)+' + 未来利息 '+money(s.futureInterest)+' = 住房预留 '+money(a.house):'当前不单列住房预算';const impossible=!Number.isFinite(a.total);
+ $('warning').classList.toggle('hidden',!impossible);
+ if(impossible)$('warning').textContent=s.finite?'当前回报与年限组合超出可计算范围，请调整假设。':'实际年回报率不为正：无法仅靠固定收益永久覆盖正的生活开销。可调整假设，或启用有限年限模型。';
+ $('cityTag').textContent=CITIES[s.city].name;$('childTag').textContent=s.children+' 个孩子';$('homeTag').textContent=s.buyHouse?(s.paidPrincipal>0?'购房余款 / 房贷':'计划买房'):'不预留住房资金';
+ $('total').textContent=fmt(a.total);$('mobileGoal').textContent=fmt(a.total);$('totalUnit').textContent=impossible?'':'万元';
+ $('targetTitle').textContent=s.finite?'覆盖未来 '+s.years+' 年的家庭预算':'你的家庭财富自由目标';
+ $('heroCaption').textContent=s.finite?'按今天的购买力估算 · 期限末生活费本金用完':'按今天的购买力估算 · 日常生活资产本金的购买力保持不变';
+ $('realRate').textContent=fmt(a.r*100,2)+'%';$('multiplier').textContent=Number.isFinite(a.multiple)?fmt(a.multiple,1)+' 倍':'无有限解';
+ $('gapTitle').textContent=a.gap<0?'超过目标的余额':'距离目标还差';
+ $('gap').innerHTML=impossible?'无法计算':fmt(Math.abs(a.gap))+' <small>万元</small>';
+ $('gapHint').textContent=s.assets===0?'先填写现有资产，看看你的进度':impossible?'当前永久覆盖假设不可行':a.total===0?'当前预算为零':(a.gap<=0?'按当前假设，资产已覆盖目标':'已覆盖目标的 '+fmt(s.assets/a.total*100,1)+'%');
+ $('affordable').innerHTML=a.affordable===null?'大项预算不足':fmt(a.affordable,0)+' <small>元 / 月</small>';
+ $('affordableHint').textContent=a.available<0?'育儿、医疗与购房还差 '+money(-a.available):!s.finite&&a.r<=0?'实际回报不为正，无法支持正的永久月开销':s.finite?'先留足大项，再按 '+s.years+' 年消耗生活费本金':'先留足大项，再保持生活费本金购买力';
+ const parts=[['日常生活投资本金',a.living,'#345c48'],['孩子的成长预算',a.children,'#91a887'],['全家医疗预留',a.medical,'#dfaa73'],['剩余住房资金',a.house,'#df7547']];
+ $('breakdownBar').innerHTML=parts.map(([n,v,c])=>'<div class="segment" style="background:'+c+';width:'+(impossible?0:a.total===0?0:v/a.total*100)+'%"></div>').join('');
+ $('legend').innerHTML=parts.map(([n,v,c])=>'<div class="legend-row"><span class="dot" style="background:'+c+'"></span><span>'+n+'</span><span class="amount">'+money(v)+'<span class="pct">'+(impossible?'—':fmt(a.total===0?0:v/a.total*100,1)+'%')+'</span></span></div>').join('');
+ const m=Number.isFinite(a.multiple)?fmt(a.multiple,1):'不可行';
+ $('formula').innerHTML='<span>'+m+' × X</span><span class="plus">+</span><span>K × N</span><span class="plus">+</span><span>M</span><span class="plus">+</span><span>H</span>';
+ $('formulaNumbers').textContent='X = '+fmt(s.monthly,0)+' 元/月；K = '+money(s.childCost)+'；N = '+s.children+'；M = '+money(s.medical)+'；H = '+money(a.house)+'。金额统一换算为万元后相加。';
+ $('sensitivity').innerHTML=[.02,.025,.03].map((r,i)=>{const v=calculate(s,r);return '<div class="scenario '+(Math.abs(a.r-r)<1e-9?'selected':'')+'"><span>实际年回报 '+fmt(r*100,1)+'%</span><b>'+fmt(v.total)+' <small>万</small></b><small>'+fmt(v.multiple,1)+' × 月生活费</small></div>'}).join('');
+ const ref=CITIES[s.city];$('childHint').textContent=ref.cost===null?'单孩预算由你填写。只留未来尚未发生的支出；如需大学、留学等费用，可一并加入。':'视频'+ref.name+'单孩参考为 '+ref.cost+' 万元（0–18 岁）。当前填写 '+fmt(s.childCost)+' 万元；只留未来支出，大学等额外费用可自行加上。';
+ try{localStorage.setItem(KEY,JSON.stringify(s));$('saveStatus').textContent='当前输入已自动保存 · 历史对比请点“保存当前方案”'}catch(e){$('saveStatus').textContent='当前浏览器不支持自动保存，请导出方案备份'}
+}
+$('planner').addEventListener('submit',e=>e.preventDefault());
+$('planner').addEventListener('input',e=>{if(e.target.id==='importFile')return;sync();render()});
+$('city').addEventListener('change',()=>{const c=CITIES[$('city').value];if(c.cost!==null)$('childCost').value=c.cost;render();toast(c.cost===null?'已切换自定义，保留所有数字':'已替换单孩育儿参考；其他预算保持你的填写')});
+$('reset').addEventListener('click',()=>{apply({...DEFAULTS});toast('已恢复：上海 · 1 个孩子 · 计划买房')});
+$('print').addEventListener('click',()=>{try{validate(read());window.print()}catch(e){toast('请先补全有效数字再打印')}});
+$('export').addEventListener('click',()=>{try{const s=validate(read());const data={version:2,title:'人生有数家庭预算',exportedAt:new Date().toISOString(),inputs:s,snapshots};$('jsonText').value=JSON.stringify(data,null,2);$('jsonTransfer').open=true;setMobileView('plans',true);const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='人生有数-全部方案.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('已导出全部方案；也可复制下方备份文本')}catch(e){toast('请先补全有效数字再导出')}});
+$('import').addEventListener('click',()=>$('importFile').click());
+const SNAPSHOT_KEY='life-in-numbers-snapshots-v1';
+let snapshots=[],selectedPlans=new Set(),historyReadable=true;
+function normalizeInputs(raw){
+ if(!raw||typeof raw!=='object'||Array.isArray(raw))throw new Error('方案格式不正确');
+ const s={};for(const k of Object.keys(DEFAULTS))s[k]=Object.hasOwn(raw,k)?raw[k]:(['paidPrincipal','futureInterest'].includes(k)?0:undefined);
+ return validate(s);
+}
+function normalizeSnapshot(p){
+ if(!p||typeof p!=='object'||typeof p.id!=='string'||!/^[A-Za-z0-9_-]{1,100}$/.test(p.id)||typeof p.name!=='string'||!p.name.trim()||p.name.trim().length>60||typeof p.createdAt!=='string'||!Number.isFinite(Date.parse(p.createdAt)))throw new Error('历史方案格式不正确');
+ return {id:p.id,name:p.name.trim(),createdAt:new Date(p.createdAt).toISOString(),inputs:normalizeInputs(p.inputs)};
+}
+function parseSnapshotList(raw){
+ if(!Array.isArray(raw)||raw.length>100)throw new Error('最多保存 100 份方案');
+ const list=raw.map(normalizeSnapshot);if(new Set(list.map(x=>x.id)).size!==list.length)throw new Error('方案编号重复');return list;
+}
+function mergeSnapshotLists(current,incoming){
+ const list=[...current],ids=new Set(current.map(x=>x.id));for(const p of incoming)if(!ids.has(p.id)){list.push(p);ids.add(p.id)}
+ if(list.length>100)throw new Error('合并后超过 100 份，请先备份已有记录');return list;
+}
+function parseBackup(raw){
+ if(!raw||![1,2].includes(raw.version))throw new Error('不支持的方案版本');
+ return {inputs:normalizeInputs(raw.inputs),snapshots:raw.version===2?parseSnapshotList(raw.snapshots):[]};
+}
+function newId(){return typeof crypto.randomUUID==='function'?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)}
+function dateLabel(iso){return new Date(iso).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}
+function escapeText(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function commitSnapshots(next){
+ if(!historyReadable)throw new Error('历史记录未能读取，请先检查或备份浏览器存储');
+ localStorage.setItem(SNAPSHOT_KEY,JSON.stringify(next));snapshots=next;
+}
+function saveSnapshot(name,inputs){
+ const item={id:newId(),name:(name||'方案 '+dateLabel(new Date().toISOString())).trim().slice(0,60),createdAt:new Date().toISOString(),inputs:{...validate(inputs)}};
+ if(snapshots.length>=100)throw new Error('最多保存 100 份，请先导出备份');
+ commitSnapshots([...snapshots,item]);selectedPlans.add(item.id);while(selectedPlans.size>4)selectedPlans.delete(selectedPlans.values().next().value);renderSnapshots();return item;
+}
+function saveCurrentPlan(){try{saveSnapshot($('snapshotName').value,read());$('snapshotName').value='';toast('已保存独立方案，旧方案不会被覆盖');setMobileView('plans');$('savedPlans').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){toast('保存失败：'+e.message)}}
+function renderSnapshots(){
+ $('snapshotCount').textContent=snapshots.length+' 份方案';
+ $('snapshotList').innerHTML=snapshots.length?[...snapshots].reverse().map(p=>{const a=calculate(p.inputs);return '<div class="snapshot-item"><input type="checkbox" class="snapshot-select" id="select-'+p.id+'" data-select="'+p.id+'" '+(selectedPlans.has(p.id)?'checked':'')+' aria-label="对比 '+escapeText(p.name)+'"><div class="snapshot-meta"><strong><label for="select-'+p.id+'">'+escapeText(p.name)+'</label></strong><small>'+escapeText(dateLabel(p.createdAt))+' · 目标 '+money(a.total)+'</small></div><button type="button" class="btn" data-load="'+p.id+'">载入</button></div>'}).join(''):'<p class="snapshot-empty">还没有历史方案，点击“保存当前方案”留下第一份记录。</p>';
+ renderComparison();
+}
+function comparisonTable(plans,rows){
+ const heads=plans.map(p=>'<th scope="col">'+escapeText(p.name)+'<small>'+escapeText(dateLabel(p.createdAt))+'</small></th>').join('');
+ return '<div class="table-wrap"><table><thead><tr><th scope="col">对比项</th>'+heads+'</tr></thead><tbody>'+rows.map(([label,get])=>{const values=plans.map(p=>get(p.inputs,calculate(p.inputs)));return '<tr class="'+(new Set(values).size>1?'different':'')+'"><th scope="row">'+label+'</th>'+values.map(v=>'<td>'+escapeText(v)+'</td>').join('')+'</tr>'}).join('')+'</tbody></table></div>';
+}
+function renderComparison(){
+ const plans=snapshots.filter(p=>selectedPlans.has(p.id));if(plans.length<2){$('compareContent').innerHTML='<p class="snapshot-empty">已选择 '+plans.length+' 份；请在“保存与对比”中勾选 2–4 份历史方案。</p>';return}
+ const results=[['财富自由 / 年限目标',(s,a)=>money(a.total)],['住房未来资金 H',(s,a)=>money(a.house)],['现有可支配资产',s=>money(s.assets)],['距离目标的缺口',(s,a)=>!Number.isFinite(a.gap)?'无有限解':a.gap>=0?'还差 '+money(a.gap):'超出 '+money(-a.gap)],['可支持的月生活费',(s,a)=>a.affordable===null?'大项预算不足':fmt(a.affordable,0)+' 元/月']];
+ const parameters=[['城市',s=>CITIES[s.city].name],['家庭月生活费',s=>fmt(s.monthly)+' 元/月'],['孩子数量',s=>s.children+' 个'],['单孩育儿预算',s=>money(s.childCost)],['全家医疗预算',s=>money(s.medical)],['预留住房资金',s=>s.buyHouse?'是':'否'],['房屋总价',s=>money(s.house)],['已支付购房本金',s=>money(s.paidPrincipal)],['未来房贷利息',s=>money(s.futureInterest)],['未付税费装修',s=>money(s.fees)],['名义年回报率',s=>fmt(s.nominal,3)+'%'],['年通胀率',s=>fmt(s.inflation,3)+'%'],['实际年回报率',(s,a)=>fmt(a.r*100,3)+'%'],['模型与覆盖年限',s=>s.finite?s.years+' 年，期末生活本金用完':'永久覆盖，保持生活本金购买力']];
+ $('compareContent').innerHTML=comparisonTable(plans,results)+'<details><summary>展开全部输入参数</summary>'+comparisonTable(plans,parameters)+'</details><p class="compare-note">按保存时的输入重新计算。表中只包含已保存快照；当前编辑中的改动需另存为新方案后参与对比。金额均按今天购买力表示。</p>';
+}
+function importBackupText(text){
+ if(text.length>1000000)throw new Error('备份文件过大');
+ const data=parseBackup(JSON.parse(text)),before=normalizeInputs(read()),next=mergeSnapshotLists(snapshots,data.snapshots);
+ // Preserve the current working numbers before replacing them with imported inputs.
+ const archive={id:newId(),name:'导入前的当前方案',createdAt:new Date().toISOString(),inputs:before};
+ if(next.length>=100)throw new Error('请先备份记录，导入时需要为当前方案留一个位置');
+ commitSnapshots([...next,archive]);apply(data.inputs);selectedPlans=new Set(snapshots.slice(-4).map(p=>p.id));renderSnapshots();setMobileView('plans',true);toast('已导入，导入前的当前数字也已留档');
+}
+$('saveCurrent').addEventListener('click',saveCurrentPlan);$('savePlan').addEventListener('click',saveCurrentPlan);
+$('snapshotList').addEventListener('change',e=>{const id=e.target.dataset.select;if(!id)return;if(e.target.checked){if(selectedPlans.size>=4){e.target.checked=false;toast('一次最多对比 4 份方案');return}selectedPlans.add(id)}else selectedPlans.delete(id);renderComparison()});
+$('snapshotList').addEventListener('click',e=>{const id=e.target.dataset.load;if(!id)return;const p=snapshots.find(x=>x.id===id);if(!p)return;try{saveSnapshot('载入前的当前方案',read());apply(p.inputs);toast('已载入“'+p.name+'”；载入前的数字已留档')}catch(err){toast('载入失败：'+err.message)}});
+$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>1000000)throw new Error('备份文件过大');importBackupText(await f.text())}catch(err){toast('导入失败：'+err.message)}finally{e.target.value=''}});
+$('importText').addEventListener('click',()=>{try{importBackupText($('jsonText').value)}catch(e){toast('导入失败：'+e.message)}});
+try{const raw=localStorage.getItem(SNAPSHOT_KEY);if(raw)snapshots=parseSnapshotList(JSON.parse(raw))}catch(e){historyReadable=false;toast('历史记录读取失败，原始记录已保留，未覆盖')}
+let saved;try{const raw=localStorage.getItem(KEY);if(raw)saved=normalizeInputs(JSON.parse(raw))}catch(e){toast('旧输入读取失败，已保留可用的历史方案')}
+// Retain the existing autosaved inputs as the first baseline when upgrading.
+if(saved&&snapshots.length===0&&historyReadable){try{saveSnapshot('升级时保留的当前方案',saved)}catch(e){toast('当前输入已恢复，但留档失败，请导出备份')}}
+selectedPlans=new Set(snapshots.slice(-4).map(p=>p.id));apply(saved||{...DEFAULTS});renderSnapshots();setMobileView('inputs');
+</script>
+</body></html>
